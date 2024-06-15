@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for hover effect */
+        .image-card:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom CSS for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Adjust grid for 5 images in a row */
+        @media (min-width: 768px) {
+            .grid-cols-5 {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body class="bg-black p-4">
+    <h2 class="text-2xl font-bold text-yellow-300 mb-8 text-start">Wedding <span class="text-white">Photos</span></h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <!-- Image Card -->
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Horizontal Image/-118330658.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('image/Horizontal Image/-2117903398.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat this card structure for each image -->
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Horizontal Image/-2117903398.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Horizontal Image/-2146840489.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('image/Horizontal Image/-2117903398.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Horizontal Image/1423232167.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('image/Horizontal Image/-2117903398.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Horizontal Image/1471994243.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('image/Horizontal Image/-2117903398.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Horizontal Image/918415760.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('image/Horizontal Image/-2117903398.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-1405904343.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('image/Horizontal Image/-2117903398.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-160070143.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-160070143.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-1828543313.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-398951574.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-568701588.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-653016224.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/-976772163.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/1046883712.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/1433681862.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/1471994243.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/1678180334.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/1993678741.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/251833858.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/678295414.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/848378214.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/VerticalImage/925193328.jpg" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Screenshot 2024-05-21 214145.png" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Screenshot 2024-05-21 214134.png" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+        <div class="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:scale-105 image-card">
+            <!-- Image -->
+            <img src="Image/Screenshot 2024-05-21 214119.png" alt="Image" class="w-full h-64 object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0  opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out overlay">
+                <!-- Hover Content -->
+                <div class="flex items-center justify-center h-full">
+                    <button onclick="openModal('Image/VerticalImage/-1405904343.jpg')" class="px-4 py-2 bg-gray-800 text-white rounded-md">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImg" src="" alt="Modal Image">
+        </div>
+    </div>
+
+    <script>
+        // Function to open modal with specified image source
+        function openModal(src) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modalImg");
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
+
+        // Function to close modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+.glowing-effect {
+    animation: glowing 2s infinite;
+  }
+
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    50% {
+      box-shadow: 0 0 20px 10px rgba(60, 223, 142, 0.6);
+    }
+
+    100% {
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+
+/*  */
+.swiper-container {
+  width: 100%;
+  max-width: 600px;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.card {
+    flex: 1;
+    margin: 10px;
+    max-width: 450px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+}
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  background-image: url("Image/"); /* Specify the path to your background image */
+  background-size: cover;
+  background-position: center;
+  padding: 20px; /* Add padding to create space between cards and the container edges */
+}
+
+.card {
+  flex: 0 0 calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.card-hover {
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+.card-hover:hover {
+  transform: scale(1.05);
+  border-color: #F59E0B; /* Tailwind's yellow-500 color */
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  padding-bottom: 5px;
+}
+li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ffdd00; /* Change this to your desired underline color */
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+li:hover::after {
+  transform: scaleX(1);
+}.columns-2 {
+  column-count: 4;
+  column-gap: 20px; /* Adjust as needed */
+}
+

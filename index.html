@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATLAS Photostudio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <style>
+    .image-container {
+      position: relative;
+    }
+    html {
+            scroll-behavior: smooth;
+        }
+
+    .image-container:hover img {
+      transform: scale(1.05);
+    }
+
+    #imagePopup {
+      display: none;
+    }
+
+    #imagePopup.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body class="bg-black text-gray-900">
+  <!-- Header -->
+  <header class="text-center bg-black fixed w-full z-30">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        <img src="Image/Atlas.png" alt="Logo" class="h-20 p-1 sm:ml-10 mt-1">
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="block md:block lg:hidden xl:hidden text-white hover:text-pink-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                </path>
+            </svg>
+        </button>
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu"
+            class="hidden lg:hidden xl:hidden absolute top-0 left-0 w-full h-full  bg-opacity-90 justify-end items-end">
+            <button id="closeMobileMenuBtn" class="absolute top-0 right-0 mt-4 mr-4 text-white hover:text-pink-700">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+            <ul class="text-white text-center bg-gray-700 p-1 flex-col flex">
+                <li><a href="#relative" class="block py-4 hover:text-yellow-300 nav-link" >Home</a></li>
+                <li><a href="#about-me" class="block py-4 hover:text-yellow-300 nav-link">About</a></li>
+                <li><a href="#package" class="block py-4 hover:text-yellow-300 nav-link">Package</a></li>
+                <li><a href="#booking" class="block py-4 hover:text-yellow-300 nav-link">Booking</a></li>
+                <li><a href="#contact" class="block py-4 hover:text-yellow-300 nav-link">Contact Us</a></li>
+                <li><button  onclick="scrollToSection('get-in-touch')"
+                        class="hidden  bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">Get
+                        In Touch</button></li>
+            </ul>
+        </nav>
+        <!-- Desktop Menu -->
+        <nav class="hidden lg:block xl:block">
+          <nav class="hidden md:flex space-x-12">
+            <a href="#" class="text-white hover:text-yellow-300">Home</a>
+            <a href="#about-me" class="text-white hover:text-yellow-300">About</a>
+            <a href="#package" class="text-white hover:text-yellow-300">Package</a>   
+            <a href="#booking" class="text-white hover:text-yellow-300">Booking</a>
+            <a href="#contact" class="text-white hover:text-yellow-300">Contact</a>
+          </nav>
+        </nav>
+        <button onclick="scrollToSection('contact')" class="hidden lg:inline-block bg-gradient-to-r from-yellow-400 to-white text-black font-semibold py-2 px-4 rounded-lg hover:from-yellow-500 hover:to-white hover:bg-gradient-to-r hover:shadow-lg transition duration-300">Get In Touch</button>
+      </div>
+</header>
+  <!-- Home Screen Content-->
+  <section class="bg-black py-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center ">
+      <!-- Image on the left side -->
+      <div class="md:w-1/2 flex justify-center md:justify-start">
+        <img src="Image/AtlasHome.svg" alt="Sample Image" class="lg:w-full lg:h-full md:w-full md:h-full sm:w-auto sm:h-2 rounded-lg shadow-lg opacity-80 ">
+      </div>
+      <!-- Content on the right side -->
+      <div class="md:w-1/2 mt-8 md:mt-0 md:ml-8">
+        <div class="flex items-center">
+          <img src="Image/Atlas.png" alt="ATLAS Photostudio Logo" class="h-30 w-20 mb-4 animate-pulse mt-10">
+        </div>
+        <h2 class="text-4xl font-bold text-yellow-300 mb-4">ATLAS Photostudio</h2>
+        <p class="text-white mb-6">
+          Atlas Photostudio captures the essence of your special moments with stunning precision and creativity. Our
+          team of experienced photographers is dedicated to delivering exceptional quality and timeless images. Trust
+          Atlas Photostudio to transform your memories into beautiful works of art. </p>
+          <div class="flex space-x-4 mb-10">
+            <a href="#" class="text-gray-700 hover:text-gray-900">
+              <img src="Image/whatsapp (1).png" alt="WhatsApp" class="h-6 w-6 hover:opacity-75">
+            </a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">
+              <img src="Image/instagram (1).png" alt="Instagram" class="h-6 w-6 hover:opacity-75">
+            </a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">
+              <img src="Image/mail (2).png" alt="YouTube" class="h-6 w-6 hover:opacity-75">
+            </a>
+          </div>
+          <button onclick="scrollToSection('explore')" class="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-yellow-500 hover:to-white hover:bg-gradient-to-r hover:shadow-lg transition duration-300">Explore Us</button>
+      </div>
+    </div>
+  </section>
+  <!-- Explore Atlas -->
+  <section class="bg-black py-12" id="explore">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-yellow-300 mb-8 text-center">Explore <span class="text-white">Atlas</span></h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="blog.html" class="group">
+          <div class="relative group flex justify-center items-center cursor-pointer image-container">
+            <img src="Image/Screenshot 2024-05-21 213428.png" alt="Category 1"
+              class="w-full h-auto rounded-lg shadow-lg group-hover:transform group-hover:scale-105 group-hover:opacity-75">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-bold">Wedding</p>
+            </div>
+          </div>
+        </a>
+        <!-- Repeat for other images -->
+        <a href="blog.html" class="group">
+          <div class="relative group flex justify-center items-center cursor-pointer image-container">
+            <img src="Image/VerticalImage/-160070143.jpg" alt="Category 1"
+              class="w-full h-auto rounded-lg shadow-lg group-hover:transform group-hover:scale-105 group-hover:opacity-75">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-bold">Pre Wedding</p>
+            </div>
+          </div>
+        </a>
+        <a href="blog.html" class="group">
+          <div class="relative group flex justify-center items-center cursor-pointer image-container">
+            <img src="Image/Screenshot 2024-05-21 213507.png" alt="Category 1"
+              class="w-full h-auto rounded-lg shadow-lg group-hover:transform group-hover:scale-105 group-hover:opacity-75">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-bold">Post wedding</p>
+            </div>
+          </div>
+        </a>
+        <a href="blog.html" class="group">
+          <div class="relative group flex justify-center items-center cursor-pointer image-container">
+            <img src="Image/VerticalImage/-398951574.jpg" alt="Category 1"
+              class="w-full h-auto rounded-lg shadow-lg group-hover:transform group-hover:scale-105 group-hover:opacity-75">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-bold">Casuals</p>
+            </div>
+          </div>
+        </a>
+        <a href="blog.html" class="group">
+          <div class="relative group flex justify-center items-center cursor-pointer image-container">
+            <img src="Image/VerticalImage/-568701588.jpg" alt="Category 1"
+              class="w-full h-auto rounded-lg shadow-lg group-hover:transform group-hover:scale-105 group-hover:opacity-75">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-bold">Couples</p>
+            </div>
+          </div>
+        </a>
+        <a href="blog.html" class="group">
+          <div class="relative group flex justify-center items-center cursor-pointer image-container">
+            <img src="Image/VerticalImage/-653016224.jpg" alt="Category 1"
+              class="w-full h-auto rounded-lg shadow-lg group-hover:transform group-hover:scale-105 group-hover:opacity-75">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-bold">Love</p>
+            </div>
+          </div>
+        </a>
+        <!-- Repeat for other images -->
+      </div>
+    </div>
+  </section>
+  <!-- Package -->
+  <section class="bg-black p-2 md:py-20" id="package">
+    <h2 class="text-4xl font-bold text-yellow-300 text-center">Our <span class="text-white">Packages</span></h2>
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 w-full mt-10">
+      <!-- Repeat this block for each product -->
+      <div class="max-w-xl bg-white rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+          <img class="w-full h-64 object-cover object-center" src="Image/Horizontal Image/-2117903398.jpg"
+            alt="product image">
+        </a>
+        <div class="flex flex-wrap gap-4 m-2">
+          <!-- <div
+            class="flex items-center space-x-2 bg-green-200 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+            <a href="blog.html"><span><Strong>Premium Wedding *</Strong></span></a>
+          </div> -->
+          <!-- <div
+            class="flex items-center space-x-2 bg-yellow-200 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">
+            <span> <strong>Premium Birthday *</strong></span>
+          </div> -->
+          <h5 class="text-xl font-semibold text-gray-900 dark:text-gray-200">Wedding Photoshoot</h5>
+          <div>
+            <ul class="text-black">
+              <li>&#10004; Tradition Photography</li>
+              <li>&#10004; Traditional Photography</li>
+              <li>&#10004; Candid Photo</li>
+            </ul>
+          </div>
+          <button onclick="showPopup()" type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-10 h-10">
+            <svg class="w-8 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+            <!-- <span class="sr-only">Icon description</span> -->
+          </button>
+          <!-- Hidden popup content -->
+          <div id="popup" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+            <div class="bg-black p-6 rounded-lg shadow-md max-w-sm"> <!-- Adjust max-w class -->
+              <div class="flex items-center justify-center">
+                <img src="Image/Atlas.png" alt="ATLAS Photostudio Logo" class="h-20 w-20 mb-4 animate-pulse">
+              </div>
+              <ul class="text-white columns-3 justify-between text-center w-96" style="padding-left: 0;">
+                <!-- Remove default padding -->
+                <li style="list-style: none;">&#10004; Unlimited Row Pics</li>
+                <li style="list-style: none;">&#10004; Selected photos 400 pics</li>
+                <li style="list-style: none;">&#10004; 2 Premium Albums</li>
+                <li style="list-style: none;">&#10004; 1Hour Edit Video With Pendrive</li>
+              </ul>
+              <h5
+                class="text-xl text-yellow-300 font-semibold  text-center dark:text-gray-200 justify-self-center animate-bounce mt-4">
+                &#8377; 54,999</h5>
+              <button class="text-white" onclick="hidePopup()">Close</button>
+            </div>
+          </div>
+          <h5 class="text-md font-semibold text-gray-900 dark:text-gray-200 mb-2"><strong>Complimentry</strong> : <br>
+            Pre & Post Wedding Photoshoot 20x30 Photo Frame</h5>
+        </div>
+        <div class="p-6">
+          <a href="#">
+            <h5
+              class="text-xl font-semibold  text-center text-gray-900 dark:text-gray-200 justify-self-center animate-bounce">
+              &#8377; 54,999</h5>
+            <!-- <span class="text-gray-900"></span> Indian Rupee Symbol -->
+          </a>
+          <!-- Rating stars here -->
+          <div class="flex justify-between items-center">
+            <a href="blog.html"
+              class="text-gray-900 bg-yellow-200 hover:bg-yellow-400 focus:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:focus:ring-blue-800">Explore</a>
+            <a href="#booking"
+              class="text-gray-900 bg-blue-300 hover:bg-blue-400 focus:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:focus:ring-blue-800">BookNow</a>
+          </div>
+        </div>
+      </div>
+  <!-- Repeat this block for each product -->
+  <div class="max-w-xl bg-white rounded-lg shadow-md overflow-hidden">
+    <a href="#">
+      <img class="w-full h-64 object-cover object-center" src="Image/Horizontal Image/1423232167.jpg" alt="product image">
+    </a>
+    <div class="flex flex-wrap gap-4 m-2">
+      <!-- <div class="flex items-center space-x-2 bg-green-200 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+        <a href="blog.html"><span><strong>Premium Wedding *</strong></span></a>
+      </div>
+      <div class="flex items-center space-x-2 bg-yellow-200 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">
+        <span><strong>Premium Birthday *</strong></span>
+      </div> -->
+      <h5 class="text-xl font-semibold text-gray-900 dark:text-gray-200">BirthDay Photography</h5>
+      <div>
+        <ul class="text-black">
+          <li>&#10004; Tradition Photography (semi candid)</li>
+          <li>&#10004; Cinematic VideoGraphy</li>
+          <li>&#10004; Unlimited Row Pics</li>
+        </ul>
+      </div>
+      <button onclick="showPopup1()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-10 h-10">
+        <svg class="w-8 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+        </svg>
+      </button>
+      <!-- Hidden popup content -->
+      <div id="popup1" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+        <div class="bg-black p-6 rounded-lg shadow-md max-w-sm"> <!-- Adjust max-w class -->
+          <div class="flex items-center justify-center">
+            <img src="Image/Atlas.png" alt="ATLAS Photostudio Logo" class="h-20 w-20 mb-4 animate-pulse">
+          </div>
+          <ul class="text-white columns-3 justify-between text-center w-96" style="padding-left: 0;">
+            <!-- Remove default padding -->
+            <li style="list-style: none;">&#10004; Unlimited Row Pics</li>
+            <li style="list-style: none;">&#10004; Selected photos 120 pics</li>
+            <li style="list-style: none;">&#10004; 1 Premium Albums</li>
+            <li style="list-style: none;">&#10004; 5 mins Edit Video With Pendrive</li>
+          </ul>
+          <h5 class="text-xl text-yellow-300 font-semibold text-center dark:text-gray-200 justify-self-center animate-bounce mt-4">&#8377; 19,499</h5>
+          <button class="text-white mt-4" onclick="hidePopup1()">Close</button>
+        </div>
+      </div>
+      <h5 class="text-md font-semibold text-gray-900 dark:text-gray-200 mb-2"><strong>Complimentary</strong>:<br>12x18 Photo Frame</h5>
+    </div>
+    <div class="p-6">
+      <a href="#">
+        <h5 class="text-xl font-semibold text-center text-gray-900 dark:text-gray-200 justify-self-center animate-bounce">&#8377; 19,499</h5>
+      </a>
+      <!-- Rating stars here -->
+      <div class="flex justify-between items-center mt-4">
+        <a href="blog.html" class="text-gray-900 bg-yellow-200 hover:bg-yellow-400 focus:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:focus:ring-blue-800">Explore</a>
+        <a href="#booking" class="text-gray-900 bg-blue-300 hover:bg-blue-400 focus:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:focus:ring-blue-800">Book Now</a>
+      </div>
+    </div>
+  </div>
+      <!-- Repeat this block for each product -->
+      <div class="max-w-xl bg-white rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+          <img class="w-full h-64 object-cover object-center" src="Image/Screenshot 2024-05-21 214145.png"
+            alt="product image">
+        </a>
+        <div class="flex flex-wrap gap-4 m-2">
+          <!-- <div
+            class="flex items-center space-x-2 bg-green-200 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+            <a href="blog.html"><span><Strong>Premium Wedding *</Strong></span></a>
+          </div>
+          <div
+            class="flex items-center space-x-2 bg-yellow-200 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">
+            <span> <strong>Premium Birthday *</strong></span>
+          </div> -->
+          <h5 class="text-xl font-semibold text-gray-900 dark:text-gray-200">Premium Birthday Photography</h5>
+          <div>
+            <ul class="text-black">
+              <li>&#10004; Tradition Photography (semi-candid)</li>
+              <li>&#10004; OutDoor Photoshoot</li>
+              <li>&#10004; Cinematic Video Graphic</li>
+            </ul>
+          </div>
+          <button onclick="showPopup2()" type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-10 h-10">
+            <svg class="w-8 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+            <!-- <span class="sr-only">Icon description</span> -->
+          </button>
+          <!-- Hidden popup content -->
+          <div id="popup2" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+            <div class="bg-black p-6 rounded-lg shadow-md max-w-sm"> <!-- Adjust max-w class -->
+              <div class="flex items-center justify-center">
+                <img src="Image/Atlas.png" alt="ATLAS Photostudio Logo" class="h-20 w-20 mb-4 animate-pulse">
+              </div>
+              <ul class="text-white columns-3 justify-between text-center w-96" style="padding-left: 0;">
+                <!-- Remove default padding -->
+                <li style="list-style: none;">&#10004; Unlimited Row Pics</li>
+                <li style="list-style: none;">&#10004; Selected photos 150 pics</li>
+                <li style="list-style: none;">&#10004; 2 Premium Albums</li>
+                <li style="list-style: none;">&#10004; 5 Mins Edit Video With Pendrive</li>
+              </ul>
+              <h5
+                class="text-xl text-yellow-300 font-semibold  text-center dark:text-gray-200 justify-self-center animate-bounce mt-4">
+                &#8377; 25,499</h5>
+              <button class="text-white" onclick="hidePopup2()">Close</button>
+            </div>
+          </div>
+          <h5 class="text-md font-semibold text-gray-900 dark:text-gray-200 mb-2"><strong>Complimentry</strong> : <br>
+             12x18 Photo Frame</h5>
+        </div>
+        <div class="p-6">
+          <a href="#">
+            <h5
+              class="text-xl font-semibold  text-center text-gray-900 dark:text-gray-200 justify-self-center animate-bounce">
+              &#8377; 25,499</h5>
+            <!-- <span class="text-gray-900"></span> Indian Rupee Symbol -->
+          </a>
+          <!-- Rating stars here -->
+          <div class="flex justify-between items-center">
+            <a href="blog.html"
+              class="text-gray-900 bg-yellow-200 hover:bg-yellow-400 focus:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:focus:ring-blue-800">Explore</a>
+            <a href="#booking"
+              class="text-gray-900 bg-blue-300 hover:bg-blue-400 focus:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:focus:ring-blue-800">BookNow</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- About Us -->
+  <section id="about-me">
+    <div class="container mx-auto">
+        <div class="">
+          <h2 class="text-4xl font-bold text-yellow-300 text-center">About <span class="text-white">Atlas</span></h2>
+          <p class="text-yellow-400 text-center"></p>
+        </div>
+        <div class="flex justify-center items-center my-8 bg-black">
+            <div class="w-full md:w-3/4 lg:w-2/3 bg-white rounded-lg shadow-lg overflow-hidden relative">
+                <div class="md:flex">
+                    <div class="md:w-1/3">
+                        <img src="image/About_us.jpg" alt="Your Image" class="w-full h-auto md:h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold mb-4">About Us</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            "<strong class="text-pink-600">Keerthy</strong> is a versatile professional, skilled in
+                            makeup artistry, hairstyling, and nail care. With expertise in bridal transformations,
+                            everyday elegance, and party glamour, she brings out the best in her clients. Not only
+                            is she a skincare specialist, but she also offers her own line of lash extensions and
+                            curling products. Moreover, Keerthy has introduced her exclusive collection of eyeshadow
+                            palettes, makeup brushes, foundation, and nail polish sets. Her commitment to excellence
+                            and passion for beauty shine through in every aspect of her work."
+                            <!-- <button  onclick="scrollToSection('get-in-touch')"
+                            class="hidden lg:block bg-blue-500 hover:bg-blue-700 mt-9 text-white font-bold py-2 px-4 rounded transition-all duration-300">Portfolio</button> -->
+
+                        <div class="flex justify-center items-center space-x-6 mt-11">
+                            <a href="https://whatsapp.com/channel/0029Va71EPf9Bb5pP3xkfZ0X"
+                                class="social-icon inline-block animate-bounce">
+                                <img src="image/whatsapp copy.png" alt="WhatsApp" class="h-10 w-10">
+                            </a>
+                            <a href="https://www.instagram.com/makeover_by__keerthy?igsh=MWJjendzdzVoZmJwYw=="
+                                class="social-icon inline-block animate-bounce">
+                                <img src="image/instagram1.png" alt="Instagram" class="h-10 w-10">
+                            </a>
+                            <a href="https://www.youtube.com/@keeks_09?fbclid=PAZXh0bgNhZW0CMTEAAaaq48EzgHbkLL3d2Es3K5vMmZEiQ3-GNWpNdEl2jaAdk2bPB4BZifLy9jI_aem_Aayvl1MBuydXQJB90Ct5z_EDNtKtftVcRQq-FQ41p7xzv9_CmMlakTZyIkvsMepeHmsBXTMN85DYfywj04Xh0mjR"
+                                class="social-icon inline-block animate-bounce">
+                                <img src="image/youtube.png" alt="YouTube" class="h-10 w-10">
+                            </a>
+                            <a href="mailto:your_email@example.com" class="social-icon inline-block animate-bounce">
+                                <img src="image/mail (2).png" alt="Gmail" class="h-10 w-10">
+                            </a>
+                        </div>
+                        <p class="mt-4 text-gray-500">- Click In Touch</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>  
+  <!-- Contact Section -->
+  <section class="contact-section transition-transform duration-300 ease-in-out bg-black" id="contact">
+    <h2 class="text-4xl font-bold text-yellow-300 mb-8 text-center">Contact <span class="text-white">Us</span></h2>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-black shadow-lg rounded-lg p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Left Side: Static Contact Details with Icons -->
+          <div>
+            <h2 class="text-2xl text-blue-300 font-semibold mb-4">Contact Details</h2>
+            <div class="flex items-center mb-2 text-gray-600 mt-5">
+              <a href="mailto:your.email@example.com" class="text-gray-700 hover:text-gray-900 mr-2">
+                  <img src="Image/gmail (1).png" alt="Email Icon" class="h-6 w-6 hover:opacity-75">
+              </a>
+              <span><strong class="text-white text-xl">Email:</strong> <br>
+              <span class="text-from-yellow-500 hover:to-white"> 
+                  <a  href="mailto:your.email@example.com" class="bg-gradient-to-r from-yellow-500 to-white bg-clip-text text-transparent font-semibold text-md">your.email@example.com</a>
+              </span>
+          </div>
+            
+            <div class="flex items-center mb-2 text-gray-600 mt-5">
+              <a href="#" class="text-gray-700 hover:text-gray-900 mr-2">
+                <img src="Image/location-pin.png" alt="Email Icon" class="h-6 w-6 hover:opacity-75">
+              </a>
+              <span><strong class="text-white text-xl">Email:</strong> <br>
+               <a href="https://www.google.com/maps/place/Your+Office+Location" class="bg-gradient-to-r from-yellow-500 to-white bg-clip-text text-transparent font-semibold text-md"> your.email@example dhdtg <br> your.email@example.com</a> </span>
+            </div>
+            
+            <div class="flex items-center text-gray-600 mt-5">
+              <a href="#" class="text-gray-700 hover:text-gray-900 mr-2">
+                <img src="Image/mobile.png" alt="Phone Icon" class="h-6 w-6 hover:opacity-75">
+              </a>
+              <span><strong class="text-white text-xl">Phone:</strong> <br>
+                <a href="tel:+1234567890" class="bg-gradient-to-r from-yellow-500 to-white bg-clip-text text-transparent font-semibold text-md">+123-456-7890</a> </span>
+            </div>
+            
+            <div class="flex items-center justify-center mt-10">
+              <img src="Image/Atlas.png" alt="ATLAS Photostudio Logo" class="animate-pulse" style="width: 50%; height: 50%;">
+            </div>
+          </div>
+  
+          <!-- Right Side: Contact Form -->
+          <div>
+            <h2 class="text-2xl font-semibold mb-4 text-blue-300">Get in Touch</h2>
+            <form id="contact-form" action="https://formspree.io/f/xqkrogrq" method="POST">
+                <div class="mb-4">
+                    <label for="name" class="block text-white">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-white">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-white">Phone</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-white">Message</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Send Message</button>
+            </form>
+            <div id="response-message" class="hidden mt-4 p-4 rounded-lg"></div>
+        </div>
+        
+        <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+        
+            const form = event.target;
+            const formData = new FormData(form);
+        
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+        
+            const responseMessage = document.getElementById('response-message');
+            if (response.ok) {
+                responseMessage.textContent = 'Thank you for your message. It has been sent.';
+                responseMessage.classList.remove('hidden');
+                responseMessage.classList.add('bg-green-500', 'text-white');
+                form.reset();
+            } else {
+                responseMessage.textContent = 'Oops! Something went wrong and we couldn\'t send your message.';
+                responseMessage.classList.remove('hidden');
+                responseMessage.classList.add('bg-red-500', 'text-white');
+            }
+        });
+        </script>   
+      </div>
+    </div>
+   </section> 
+   <!-- Booking -->
+   <section id="booking" class="bg-black py-12">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl text-white font-bold text-center mb-8">Book Your Time</h2>
+        <form action="#" method="POST" class="max-w-lg mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-white"  >
+                <div>
+                    <label for="name" class="block text-sm font-medium">Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-10 shadow-sm sm:text-sm border-gray-300 rounded-md text-black">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium">Phone</label>
+                    <input type="tel" id="phone" name="phone" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-10 shadow-sm sm:text-sm border-gray-300 rounded-md text-black ">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-10 shadow-sm sm:text-sm border-gray-300 rounded-md text-black">
+                </div>
+                <div>
+                    <label for="package" class="block text-sm font-medium">Package</label>
+                    <select id="package" name="package" class="mt-1 p-2 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black">
+                        <option value="package1 text-black">$100 Package</option>
+                        <option value="package2 text-black">$200 Package</option>
+                        <option value="package3 text-black">$300 Package</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="district" class="block text-sm font-medium">District</label>
+                    <input type="text" id="district" name="district" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-10 shadow-sm sm:text-sm border-gray-300 rounded-md text-black">
+                </div>
+                <div>
+                  <label for="date" class="block text-sm font-medium">Date</label>
+                  <input type="date" id="date" name="date" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-10 shadow-sm sm:text-sm border-gray-300 rounded-md text-black">
+              </div>
+              
+            </div>
+            <button type="submit" class="mt-6 w-full inline-flex items-center justify-center px-6 py-3  border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-yellow-400 to-white hover:from-yellow-500 hover:to-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">Book Now</button>
+        </form>
+    </div>
+</section>
+<!-- Website Partner -->
+<section class="bg-black flex flex-col items-center justify-center min-h-screen text-white">
+  <h2 class="text-4xl font-bold text-yellow-300 text-center">Website <span class="text-white">Partner</span></h2>
+
+  <div class="flex flex-col items-center justify-center ">
+    <video class="max-w-96 max-h-96 mb-4" autoplay muted loop>
+      <source src="Video/SPAG TECH (1).mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <!-- Footer -->
+    <footer class="text-center">
+      <div>
+        <p>&copy; Copyright 2024 <strong>
+            <span class="text-blue-500">SPAG</span>
+            <span class="text-green-500">Tech</span>
+          </strong>
+        </p>
+        <p>All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</section>
+  <!-- Script -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+
+    function showPopup() {
+      document.getElementById('popup').classList.remove('hidden');
+    }
+
+    function hidePopup() {
+      document.getElementById('popup').classList.add('hidden');
+    }
+    function showPopup1() {
+      document.getElementById('popup1').classList.remove('hidden');
+    }
+
+    function hidePopup1() {
+      document.getElementById('popup1').classList.add('hidden');
+    }
+    function showPopup2() {
+      document.getElementById('popup2').classList.remove('hidden');
+    }
+
+    function hidePopup2() {
+      document.getElementById('popup2').classList.add('hidden');
+    }
+
+ // JavaScript to toggle mobile menu
+     document.getElementById('closeMobileMenuBtn').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+  </script>
+</body>
+</html>
